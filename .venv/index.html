@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Telegram Web App</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        button { padding: 10px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h1>Привет, Telegram!</h1>
+    <p id="user">Загрузка...</p>
+    <button onclick="sendData()">Отправить данные</button>
+
+    <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand(); // Разворачивает Web App на весь экран
+
+        document.getElementById("user").innerText = `Привет, ${tg.initDataUnsafe.user.first_name}!`;
+
+        function sendData() {
+            tg.sendData(JSON.stringify({ message: "Привет от Web App!" }));
+            alert("Данные отправлены!");
+        }
+    </script>
+</body>
+</html>
