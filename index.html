@@ -22,17 +22,30 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* Улучшение адаптивности */
-        @media (max-width: 768px) {
-            body {
-                background-size: cover;
-                background-position: center;
-                animation-duration: 12s;
-            }
+        /* Блок профиля */
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
         }
 
-        h1 {
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff0000;
+        }
+
+        .profile h2 {
+            margin: 10px 0 5px;
             color: #ff0000;
+        }
+
+        .profile p {
+            font-size: 16px;
+            color: #ccc;
         }
 
         .menu {
@@ -76,6 +89,14 @@
 </head>
 <body>
     <h1>🔥 Telegram Web App</h1>
+
+    <!-- Профиль пользователя -->
+    <div class="profile">
+        <img src="photos/1519811232_0_1f8969_a38826b3_orig.jpg" alt="Фото сотрудника">
+        <h2>Иван Иванов</h2>
+        <p>Менеджер отдела продаж</p>
+    </div>
+
     <p>Выберите действие:</p>
     <div class="menu">
         <button onclick="sendData('Привет, Telegram!')">📤 Отправить привет</button>
