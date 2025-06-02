@@ -2,27 +2,42 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telegram Web App</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
-        body { font-family: Arial, sans-serif; text-align: center; }
-        button { padding: 10px; font-size: 16px; }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            color: #333;
+        }
+        button {
+            padding: 15px 25px;
+            font-size: 18px;
+            background-color: #0084ff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #0066cc;
+        }
     </style>
 </head>
 <body>
-    <h1>Привет, Telegram!</h1>
-    <p id="user">Загрузка...</p>
-    <button onclick="sendData()">Отправить данные</button>
+    <h1>🚀 Telegram Web App</h1>
+    <p>Нажмите кнопку ниже, чтобы отправить данные в бота!</p>
+    <button onclick="sendData()">📤 Отправить данные</button>
 
     <script>
-        let tg = window.Telegram.WebApp;
-        tg.expand(); // Разворачивает Web App на весь экран
-
-        document.getElementById("user").innerText = `Привет, ${tg.initDataUnsafe.user.first_name}!`;
-
         function sendData() {
-            tg.sendData(JSON.stringify({ message: "Привет от Web App!" }));
-            alert("Данные отправлены!");
+            const data = { message: "Привет от Web App!" };
+            window.Telegram.WebApp.sendData(JSON.stringify(data));
         }
     </script>
 </body>
