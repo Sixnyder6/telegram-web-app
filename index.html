@@ -11,41 +11,12 @@
             margin: 0;
             padding: 20px;
             color: white;
-            background: linear-gradient(-45deg, #1e1e1e, #282828, #181818, #000);
-            background-size: 400% 400%;
-            animation: gradient 8s ease infinite;
+            background: url('https://source.unsplash.com/1600x900/?galaxy,space') no-repeat center center fixed;
+            background-size: cover;
         }
 
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* Блок профиля */
-        .profile {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-        }
-
-        .profile img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid #ff0000;
-        }
-
-        .profile h2 {
-            margin: 10px 0 5px;
-            color: #ff0000;
-        }
-
-        .profile p {
-            font-size: 16px;
-            color: #ccc;
+        h1 {
+            color: #ffcc00;
         }
 
         .menu {
@@ -61,8 +32,8 @@
             max-width: 300px;
             padding: 15px;
             font-size: 18px;
-            background-color: #ff0000;
-            color: white;
+            background-color: #ffcc00;
+            color: black;
             border: none;
             cursor: pointer;
             border-radius: 5px;
@@ -70,7 +41,7 @@
         }
 
         .menu button:hover {
-            background-color: #cc0000;
+            background-color: #ffaa00;
             transform: scale(1.1);
         }
 
@@ -88,25 +59,17 @@
     </style>
 </head>
 <body>
-    <h1>🔥 Telegram Web App</h1>
-
-    <!-- Профиль пользователя -->
-    <div class="profile">
-        <img src="https://raw.githubusercontent.com/Sixnyder6/telegram-web-app/main/photos/1519811232_0_1f8969_a38826b3_orig.jpg" alt="Фото сотрудника">
-        <h2>Иван Иванов</h2>
-        <p>Менеджер отдела продаж</p>
-    </div>
-
+    <h1>🚀 Galxe Mini App</h1>
     <p>Выберите действие:</p>
     <div class="menu">
-        <button onclick="sendData('Привет, Telegram!')">📤 Отправить привет</button>
-        <button onclick="sendData('Как дела, бот?')">🔎 Спросить бота</button>
+        <button onclick="sendData('Открыть Квесты')">📜 Квесты</button>
+        <button onclick="sendData('Просмотреть Награды')">🏆 Награды</button>
     </div>
     <p class="output" id="output"></p>
 
     <script>
         function sendData(message) {
-            document.getElementById("output").innerText = `✅ Отправлено: ${message}`;
+            document.getElementById("output").innerText = `✅ Выбрано: ${message}`;
             const data = { message: message };
             window.Telegram.WebApp.sendData(JSON.stringify(data));
         }
