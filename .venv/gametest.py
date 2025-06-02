@@ -13,14 +13,15 @@ def start(message):
     web_app_url = "https://sixnyder6.github.io/telegram-web-app/"
     web_app = telebot.types.WebAppInfo(web_app_url)
 
-    button = telebot.types.InlineKeyboardButton("Открыть Web App", web_app=web_app)
+    button = telebot.types.InlineKeyboardButton("🔗 Открыть Web App", web_app=web_app)
     keyboard.add(button)
 
     bot.send_message(message.chat.id, "Нажмите кнопку ниже, чтобы открыть Web App!", reply_markup=keyboard)
 
 # Обработчик входящих данных из Web App
-@bot.message_handler(content_types=['text'])
+@bot.message_handler(content_types=['web_app_data'])
 def handle_webapp_data(message):
-    bot.send_message(message.chat.id, f"Получены данные из Web App: {message.text}")
+    data = message.web_app_data.data  # Получаем JSON-данные
+    bot.send_message(message.chat.id, f"🚀 Web App отправил: {data}")
 
 bot.polling()
