@@ -89,10 +89,31 @@
             font-weight: bold;
         }
 
-        @media (min-width: 768px) {
-            .menu {
-                flex-direction: row;
-            }
+        /* Нижние кнопки */
+        .bottom-menu {
+            position: fixed;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .bottom-menu button {
+            width: 80px;
+            height: 40px;
+            font-size: 16px;
+            color: white;
+            background-color: transparent;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 5px;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .bottom-menu button:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
         }
     </style>
 </head>
@@ -114,6 +135,13 @@
     </div>
     <p class="output" id="output"></p>
 
+    <!-- Нижние кнопки -->
+    <div class="bottom-menu">
+        <button onclick="sendData('Home')">🏠 Home</button>
+        <button onclick="sendData('Work')">🔧 Work</button>
+        <button onclick="sendData('Profile')">👤 Profile</button>
+    </div>
+
     <script>
         function updateClock() {
             const now = new Date();
@@ -125,7 +153,7 @@
         setInterval(updateClock, 1000);
 
         function sendData(message) {
-            document.getElementById("output").innerText = `✅ Отправлено: ${message}`;
+            document.getElementById("output").innerText = `✅ Выбрано: ${message}`;
             const data = { message: message };
             window.Telegram.WebApp.sendData(JSON.stringify(data));
         }
