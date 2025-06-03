@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyberpunk Web App</title>
+    <title>Telegram Web App</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
 
@@ -12,9 +12,9 @@
             text-align: center;
             margin: 0;
             padding: 20px;
-            color: #00ffcc;
-            background: linear-gradient(-45deg, #0a0a0a, #1a1a1a, #2a2a2a);
-            background-size: cover;
+            color: white;
+            background: linear-gradient(-45deg, #1e1e1e, #282828, #181818, #000);
+            background-size: 400% 400%;
             animation: gradient 8s ease infinite;
         }
 
@@ -24,19 +24,37 @@
             100% { background-position: 0% 50%; }
         }
 
-        h1 {
-            color: #ffcc00;
-            font-size: 28px;
+        /* Профиль сотрудника */
+        .profile {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
         }
 
+        .profile img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #ff0000;
+        }
+
+        .profile h2 {
+            margin: 10px 0 5px;
+            color: #ff0000;
+        }
+
+        .profile p {
+            font-size: 16px;
+            color: #ccc;
+        }
+
+        /* Часы */
         .clock {
-            font-size: 40px;
-            margin-top: 20px;
-            padding: 10px;
-            border: 2px solid #ffcc00;
-            display: inline-block;
-            border-radius: 10px;
-            background-color: rgba(255, 204, 0, 0.1);
+            font-size: 32px;
+            margin-top: 10px;
+            color: #00ffcc;
         }
 
         .menu {
@@ -52,17 +70,17 @@
             max-width: 300px;
             padding: 15px;
             font-size: 18px;
-            background: linear-gradient(90deg, #ffcc00, #ffaa00);
-            color: black;
+            background-color: #ff0000;
+            color: white;
             border: none;
             cursor: pointer;
             border-radius: 5px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s, background-color 0.3s;
         }
 
         .menu button:hover {
-            box-shadow: 0px 0px 15px #ffaa00;
-            transform: scale(1.05);
+            background-color: #cc0000;
+            transform: scale(1.1);
         }
 
         .output {
@@ -79,15 +97,20 @@
     </style>
 </head>
 <body>
-    <h1>🚀 Cyberpunk Web App</h1>
+    <h1>🔥 Telegram Web App</h1>
 
-    <!-- Часы -->
-    <div class="clock" id="clock">00:00:00</div>
+    <!-- Профиль сотрудника -->
+    <div class="profile">
+        <img src="https://raw.githubusercontent.com/Sixnyder6/telegram-web-app/main/photos/1519811232_0_1f8969_a38826b3_orig.jpg" alt="Фото сотрудника">
+        <h2>Иван Иванов</h2>
+        <p>Менеджер отдела продаж</p>
+        <div class="clock" id="clock">00:00:00</div>
+    </div>
 
     <p>Выберите действие:</p>
     <div class="menu">
-        <button onclick="sendData('Открыть Квесты')">📜 Квесты</button>
-        <button onclick="sendData('Просмотреть Награды')">🏆 Награды</button>
+        <button onclick="sendData('Привет, Telegram!')">📤 Отправить привет</button>
+        <button onclick="sendData('Как дела, бот?')">🔎 Спросить бота</button>
     </div>
     <p class="output" id="output"></p>
 
@@ -102,7 +125,7 @@
         setInterval(updateClock, 1000);
 
         function sendData(message) {
-            document.getElementById("output").innerText = `✅ Выбрано: ${message}`;
+            document.getElementById("output").innerText = `✅ Отправлено: ${message}`;
             const data = { message: message };
             window.Telegram.WebApp.sendData(JSON.stringify(data));
         }
