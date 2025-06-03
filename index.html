@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Telegram Web App</title>
+    <title>Galxe Web App</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -11,12 +11,13 @@
             margin: 0;
             padding: 20px;
             color: white;
-            background: url('https://source.unsplash.com/1600x900/?galaxy,space') no-repeat center center fixed;
+            background: linear-gradient(180deg, #0a0a0a, #1a1a1a, #2a2a2a);
             background-size: cover;
         }
 
         h1 {
             color: #ffcc00;
+            font-size: 28px;
         }
 
         .menu {
@@ -32,17 +33,17 @@
             max-width: 300px;
             padding: 15px;
             font-size: 18px;
-            background-color: #ffcc00;
+            background: linear-gradient(90deg, #ffcc00, #ffaa00);
             color: black;
             border: none;
             cursor: pointer;
             border-radius: 5px;
-            transition: transform 0.3s, background-color 0.3s;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .menu button:hover {
-            background-color: #ffaa00;
-            transform: scale(1.1);
+            box-shadow: 0px 0px 15px #ffaa00;
+            transform: scale(1.05);
         }
 
         .output {
@@ -59,7 +60,7 @@
     </style>
 </head>
 <body>
-    <h1>🚀 Galxe Mini App</h1>
+    <h1>🚀 Galxe Web App</h1>
     <p>Выберите действие:</p>
     <div class="menu">
         <button onclick="sendData('Открыть Квесты')">📜 Квесты</button>
