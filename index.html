@@ -89,9 +89,9 @@
             font-weight: bold;
         }
 
-        /* Нижние кнопки */
+        /* Нижнее меню */
         .bottom-menu {
-            position: fixed;
+            position: sticky;
             bottom: 10px;
             width: 100%;
             display: flex;
@@ -100,25 +100,18 @@
             background-color: rgba(0, 0, 0, 0.5);
         }
 
-        .bottom-menu button {
-            width: 80px;
-            height: 40px;
-            font-size: 16px;
-            color: white;
-            background-color: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 5px;
-            transition: background-color 0.3s, transform 0.3s;
-        }
-
-        .bottom-menu button:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
+        @media (max-width: 768px) {
+            .bottom-menu {
+                position: fixed;
+                bottom: 0;
+                padding: 15px 0;
+            }
         }
     </style>
 </head>
 <body>
     <h1>🔥 Telegram Web App</h1>
+    <p id="user">Привет, гость!</p>
 
     <!-- Профиль сотрудника -->
     <div class="profile">
@@ -143,6 +136,11 @@
     </div>
 
     <script>
+        let tg = window.Telegram.WebApp;
+        tg.expand(); // Разворачивает Web App на весь экран
+
+        document.getElementById("user").innerText = `Привет, ${tg.initDataUnsafe?.user?.first_name || "гость"}!`;
+
         function updateClock() {
             const now = new Date();
             const hours = String(now.getHours()).padStart(2, '0');
@@ -153,9 +151,9 @@
         setInterval(updateClock, 1000);
 
         function sendData(message) {
-            document.getElementById("output").innerText = `✅ Выбрано: ${message}`;
-            const data = { message: message };
-            window.Telegram.WebApp.sendData(JSON.stringify(data));
+            tg.sendData(JSON.stringify({ message: message })); // Отправляем данные в бота
+            tg.close(); // Закрываем Web App после отправки
+            document.getElementById("output").innerText = `✅ Отправлено: ${message}`;
         }
     </script>
 </body>
