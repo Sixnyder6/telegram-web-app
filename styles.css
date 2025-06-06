@@ -1,0 +1,180 @@
+body {
+  font-family: 'Lucius Pro', Arial, sans-serif;
+  margin: 0;
+  background: linear-gradient(120deg, #18172a 0%, #222246 100%);
+  min-height: 100vh;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+.animated-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 40px 0 40px 0;
+  background: linear-gradient(90deg, #3347ff, #11d9be, #ffb300, #3347ff);
+  background-size: 200% 200%;
+  animation: shimmer 3s infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 100% 50%; }
+}
+
+.main-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 80px;
+}
+
+.main-btn {
+  background: rgba(51, 71, 255, 0.85);
+  color: #fff;
+  border: none;
+  border-radius: 12px;
+  padding: 20px 40px;
+  font-size: 1.2rem;
+  margin: 20px;
+  cursor: pointer;
+  box-shadow: 0 4px 24px rgba(51, 71, 255, 0.2);
+  transition: background 0.3s;
+}
+
+.main-btn:hover {
+  background: rgba(51, 71, 255, 1);
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 50;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  backdrop-filter: blur(6px);
+  background: rgba(30, 33, 50, 0.48);
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background: rgba(36, 36, 60, 0.89);
+  box-shadow: 0 10px 32px rgba(0,0,0,0.25);
+  border-radius: 18px;
+  width: 90vw;
+  max-width: 400px;
+  margin: auto;
+  padding: 28px 18px 24px 18px;
+  position: relative;
+  animation: modalIn 0.35s cubic-bezier(.42,0,.58,1);
+}
+
+@keyframes modalIn {
+  from { transform: translateY(40px) scale(0.98); opacity: 0; }
+  to   { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+.close {
+  position: absolute;
+  right: 16px; top: 16px;
+  font-size: 2rem;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.7;
+  z-index: 2;
+}
+
+.close:hover { opacity: 1; }
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+
+.profile-header img {
+  width: 66px; height: 66px;
+  border-radius: 50%;
+  border: 3px solid #3347ff;
+  object-fit: cover;
+}
+
+#profileName {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.shift-table {
+  margin: 18px 0;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+  background: #23234a;
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 0.85rem;
+}
+
+.shift-cell {
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 3px;
+}
+
+.shift-work { background: #ff3b3b; color: #fff; }
+.shift-off  { background: #15e14a; color: #111; }
+.shift-done { background: #ffe41f; color: #111; }
+
+.scooter-stats, .work-duration {
+  margin-top: 12px;
+  background: rgba(51,71,255,0.14);
+  border-radius: 7px;
+  padding: 10px;
+  text-align: center;
+}
+
+#teamList {
+  margin-top: 20px;
+}
+
+.team-category {
+  margin-bottom: 14px;
+}
+
+.team-member {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 2px 0;
+  padding: 4px 0;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  margin-left: 8px;
+  box-shadow: 0 0 6px 2px rgba(51, 255, 82, 0.25);
+  animation: statusBlink 1.2s infinite alternate;
+}
+
+.status-dot.offline {
+  background: #e74c3c;
+  animation: none;
+  box-shadow: none;
+}
+
+.status-dot.online {
+  background: #15e14a;
+}
+
+@keyframes statusBlink {
+  from { opacity: 0.4; }
+  to   { opacity: 1; }
+}

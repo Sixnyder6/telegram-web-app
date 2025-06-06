@@ -18,552 +18,189 @@
             --gradient-1: linear-gradient(135deg, #ff4757 0%, #ff6b35 100%);
             --gradient-2: linear-gradient(135deg, #ff6b35 0%, #ffa502 100%);
             --border-radius: 12px;
+            --blur-bg: rgba(30,30,30,0.85);
         }
+        /* ... [оставь все твои стили как есть здесь] ... */
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: var(--bg-primary);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        .header {
-            padding: 20px 0;
-            background: var(--bg-primary);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            backdrop-filter: blur(10px);
-        }
-
-        .nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: 700;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text-primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            padding: 80px 0;
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(255, 71, 87, 0.1) 0%, transparent 70%);
-            z-index: -1;
-        }
-
-        .hero-title {
-            font-size: clamp(48px, 8vw, 96px);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(24px, 4vw, 48px);
-            font-weight: 600;
-            margin-bottom: 30px;
-            color: var(--text-primary);
-            animation: fadeInUp 1s ease-out 0.2s both;
-        }
-
-        .hero-description {
-            font-size: 18px;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 40px;
-            animation: fadeInUp 1s ease-out 0.4s both;
-        }
-
-        /* Stats Section */
-        .stats {
-            padding: 60px 0;
-            background: var(--bg-secondary);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-
-        .stat-item {
-            padding: 30px 20px;
-            background: var(--bg-card);
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .stat-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-1);
-        }
-
-        .stat-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.2);
-        }
-
-        .stat-number {
-            font-size: 48px;
-            font-weight: 800;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: var(--text-secondary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Team Section */
-        .team {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            font-size: 48px;
-            font-weight: 700;
-            text-align: center;
-            margin-bottom: 60px;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .team-card {
-            background: var(--bg-card);
-            padding: 30px;
-            border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .team-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-        }
-
-        .team-card.repairmen::before {
-            background: var(--gradient-1);
-        }
-
-        .team-card.tester::before {
-            background: linear-gradient(135deg, #10ac84 0%, #00d2d3 100%);
-        }
-
-        .team-card.electronics::before {
-            background: linear-gradient(135deg, #5f27cd 0%, #00d2d3 100%);
-        }
-
-        .team-card.warehouse::before {
-            background: linear-gradient(135deg, #ff9ff3 0%, #f368e0 100%);
-        }
-
-        .team-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255, 71, 87, 0.3);
-        }
-
-        .team-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-1);
-            border-radius: 50%;
-            display: flex;
+        /* Модальные окна (добавлено) */
+        .modal-bg {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0; top: 0;
+            width: 100vw; height: 100vh;
+            background: var(--blur-bg);
+            backdrop-filter: blur(8px);
+            transition: opacity 0.3s;
             align-items: center;
             justify-content: center;
-            margin-bottom: 20px;
-            font-size: 24px;
         }
-
-        .team-card.tester .team-icon {
-            background: linear-gradient(135deg, #10ac84 0%, #00d2d3 100%);
-        }
-
-        .team-card.electronics .team-icon {
-            background: linear-gradient(135deg, #5f27cd 0%, #00d2d3 100%);
-        }
-
-        .team-card.warehouse .team-icon {
-            background: linear-gradient(135deg, #ff9ff3 0%, #f368e0 100%);
-        }
-
-        .team-title {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--text-primary);
-        }
-
-        .team-count {
-            font-size: 32px;
-            font-weight: 800;
-            margin-bottom: 15px;
-        }
-
-        .team-card.repairmen .team-count {
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .team-card.tester .team-count {
-            background: linear-gradient(135deg, #10ac84 0%, #00d2d3 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .team-card.electronics .team-count {
-            background: linear-gradient(135deg, #5f27cd 0%, #00d2d3 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .team-card.warehouse .team-count {
-            background: linear-gradient(135deg, #ff9ff3 0%, #f368e0 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .team-description {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            font-size: 14px;
-        }
-
-        /* Services Section */
-        .services {
-            padding: 80px 0;
-            background: var(--bg-secondary);
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
-        }
-
-        .service-card {
+        .modal-bg.active { display: flex; }
+        .modal-window {
             background: var(--bg-card);
-            padding: 40px;
             border-radius: var(--border-radius);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .service-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient-2);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(255, 107, 53, 0.3);
-        }
-
-        .service-icon {
-            width: 60px;
-            height: 60px;
-            background: var(--gradient-2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-            font-size: 24px;
-        }
-
-        .service-title {
-            font-size: 24px;
-            font-weight: 600;
-            margin-bottom: 15px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+            max-width: 95vw;
+            width: 380px;
+            padding: 32px 18px 24px 18px;
             color: var(--text-primary);
+            position: relative;
+            animation: fadeInUp 0.4s;
         }
-
-        .service-description {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* CTA Section */
-        .cta {
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .cta-title {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 30px;
-            background: var(--gradient-1);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .cta-description {
-            font-size: 20px;
-            color: var(--text-secondary);
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 15px 30px;
-            background: var(--gradient-1);
-            color: white;
-            text-decoration: none;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            font-size: 16px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        .modal-close {
+            position: absolute;
+            right: 18px; top: 10px;
+            font-size: 2rem;
+            color: var(--accent-red);
+            background: none;
             border: none;
             cursor: pointer;
+            opacity: 0.7;
+            z-index: 2;
         }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255, 71, 87, 0.4);
+        .modal-close:hover { opacity: 1; }
+        .modal-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 18px;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-
-        .btn-secondary {
-            background: transparent;
-            border: 2px solid rgba(255, 255, 255, 0.2);
-            color: var(--text-primary);
+        /* Профиль */
+        .profile-main {
+            display: flex;
+            gap: 14px;
+            align-items: center;
+            margin-bottom: 18px;
         }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.3);
+        .profile-avatar {
+            width: 66px; height: 66px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-orange);
+            object-fit: cover;
+            background: var(--bg-secondary);
         }
-
-        /* Footer */
-        .footer {
-            padding: 40px 0;
-            background: var(--bg-primary);
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        .profile-info {
+            display: flex; flex-direction: column;
+        }
+        .profile-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        .profile-date {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+        /* График смен */
+        .shift-table {
+            margin: 12px 0 0 0;
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 3px;
+            background: var(--bg-secondary);
+            border-radius: 6px;
+            overflow: hidden;
+            font-size: 0.85rem;
+        }
+        .shift-cell {
+            padding: 10px 0;
+            text-align: center;
+            font-weight: bold;
+            border-radius: 3px;
+            min-width: 38px;
+        }
+        .shift-work { background: var(--accent-red); color: #fff; }
+        .shift-off  { background: #15e14a; color: #111; }
+        .shift-done { background: var(--accent-yellow); color: #111; }
+        .profile-stats {
+            margin: 16px 0 0 0;
             text-align: center;
         }
-
-        .footer-text {
+        .profile-scooters {
+            margin: 8px 0 0 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--accent-orange);
+        }
+        .profile-duration {
+            margin-top: 10px;
             color: var(--text-secondary);
-            margin-bottom: 20px;
         }
 
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            flex-wrap: wrap;
+        /* Статистика */
+        .stats-numbers {
+            display: flex; flex-direction: column; gap: 20px;
+            align-items: center; margin-top: 15px;
         }
-
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--text-primary);
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-on-scroll {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
-        }
-
-        .animate-on-scroll.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .hero {
-                padding: 60px 0;
-            }
-
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 20px;
-            }
-
-            .team-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .services-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .team-card, .service-card {
-                padding: 30px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Telegram Web App specific styles */
-        body.telegram-webapp {
-            padding-top: 0;
-        }
-
-        .telegram-webapp .header {
-            display: none;
-        }
-
-        /* Floating elements */
-        .floating-element {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            background: var(--gradient-1);
-            border-radius: 50%;
-            opacity: 0.05;
-            animation: float 8s ease-in-out infinite;
-        }
-
-        .floating-element:nth-child(1) {
-            top: 20%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .floating-element:nth-child(2) {
-            top: 60%;
-            right: 10%;
-            animation-delay: 3s;
+        .stats-counter {
+            font-size: 2rem;
+            font-weight: bold;
             background: var(--gradient-2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 6px;
+        }
+        .stats-label {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            margin-bottom: 7px;
+        }
+        .stats-chart {
+            width: 100%; height: 80px;
+            background: var(--bg-secondary);
+            margin: 10px 0 18px 0;
+            border-radius: 7px;
+            display: flex; align-items: flex-end; gap: 2px;
+        }
+        .stats-bar {
+            flex: 1;
+            background: var(--accent-orange);
+            border-radius: 3px 3px 0 0;
+            transition: height 0.5s;
         }
 
-        .floating-element:nth-child(3) {
-            bottom: 20%;
-            left: 20%;
-            animation-delay: 6s;
+        /* Исполнители */
+        .team-list {
+            margin-top: 12px;
         }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-30px) rotate(180deg); }
+        .team-category {
+            font-weight: 600;
+            margin-top: 9px;
+            color: var(--accent-yellow);
+        }
+        .team-member {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+            margin: 2px 0;
+            padding: 4px 0;
+        }
+        .status-dot {
+            display: inline-block;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            margin-left: 8px;
+            box-shadow: 0 0 6px 2px rgba(51, 255, 82, 0.25);
+            animation: statusBlink 1.2s infinite alternate;
+        }
+        .status-dot.offline {
+            background: var(--accent-red);
+            animation: none;
+            box-shadow: none;
+        }
+        .status-dot.online {
+            background: #15e14a;
+        }
+        @keyframes statusBlink {
+            from { opacity: 0.4; }
+            to   { opacity: 1; }
+        }
+        /* Адаптив для модалок */
+        @media (max-width:600px) {
+            .modal-window { width: 95vw; padding: 18px 3vw 18px 3vw; }
         }
     </style>
 </head>
@@ -587,6 +224,8 @@
     </header>
 
     <main>
+        <!-- ... твои секции ... -->
+
         <section class="hero" id="home">
             <div class="container">
                 <h1 class="hero-title">🛴 Lucius Pro</h1>
@@ -596,151 +235,59 @@
                     Быстро, надежно, профессионально!
                 </p>
                 <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin-top: 40px;">
-                    <button class="btn" onclick="viewProfile()">👤 Мой профиль</button>
-                    <button class="btn btn-secondary" onclick="viewStats()">📊 Статистика</button>
+                    <button class="btn" onclick="openModal('profileModal')">👤 Мой профиль</button>
+                    <button class="btn btn-secondary" onclick="openModal('statsModal')">📊 Статистика</button>
+                    <button class="btn btn-secondary" onclick="openModal('teamModal')">👥 Исполнители</button>
                 </div>
             </div>
         </section>
 
-        <section class="stats animate-on-scroll" id="stats">
-            <div class="container">
-                <div class="stats-grid">
-                    <div class="stat-item">
-                        <div class="stat-number">1,247</div>
-                        <div class="stat-label">Ремонтов в месяц</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">18</div>
-                        <div class="stat-label">Сотрудников</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">95%</div>
-                        <div class="stat-label">Качество ремонта</div>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-number">24/7</div>
-                        <div class="stat-label">Время работы</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="team animate-on-scroll" id="team">
-            <div class="container">
-                <h2 class="section-title">Наша команда</h2>
-                <div class="team-grid">
-                    <div class="team-card repairmen">
-                        <div class="team-icon">🔧</div>
-                        <h3 class="team-title">Ремонтники</h3>
-                        <div class="team-count">13</div>
-                        <p class="team-description">
-                            Опытные мастера по ремонту самокатов. Специализируются на механических поломках,
-                            замене деталей и профилактическом обслуживании.
-                        </p>
-                    </div>
-
-                    <div class="team-card tester">
-                        <div class="team-icon">🧪</div>
-                        <h3 class="team-title">Тестировщик</h3>
-                        <div class="team-count">1</div>
-                        <p class="team-description">
-                            Отвечает за контроль качества ремонта. Проводит финальное тестирование
-                            всех отремонтированных самокатов перед возвратом в эксплуатацию.
-                        </p>
-                    </div>
-
-                    <div class="team-card electronics">
-                        <div class="team-icon">⚡</div>
-                        <h3 class="team-title">Электронщики</h3>
-                        <div class="team-count">2</div>
-                        <p class="team-description">
-                            Специалисты по электронным системам. Занимаются ремонтом батарей,
-                            контроллеров, дисплеев и другой электроники.
-                        </p>
-                    </div>
-
-                    <div class="team-card warehouse">
-                        <div class="team-icon">📦</div>
-                        <h3 class="team-title">Кладовщики</h3>
-                        <div class="team-count">2</div>
-                        <p class="team-description">
-                            Отвечают за учет запчастей, инструментов и оборудования.
-                            Обеспечивают бесперебойную работу склада и логистики.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="services animate-on-scroll" id="services">
-            <div class="container">
-                <h2 class="section-title">Наши услуги</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="service-icon">🔧</div>
-                        <h3 class="service-title">Механический ремонт</h3>
-                        <p class="service-description">
-                            Ремонт колес, тормозов, рулевой системы, складного механизма и других механических компонентов самокатов.
-                        </p>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">🔋</div>
-                        <h3 class="service-title">Ремонт электроники</h3>
-                        <p class="service-description">
-                            Диагностика и ремонт батарей, зарядных устройств, контроллеров, дисплеев и системы управления.
-                        </p>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">🛡️</div>
-                        <h3 class="service-title">Профилактика</h3>
-                        <p class="service-description">
-                            Регулярное техническое обслуживание, замена расходных материалов и предупреждение поломок.
-                        </p>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">⚡</div>
-                        <h3 class="service-title">Экстренный ремонт</h3>
-                        <p class="service-description">
-                            Быстрое устранение критических поломок для минимизации простоя самокатов в парке.
-                        </p>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">📊</div>
-                        <h3 class="service-title">Диагностика</h3>
-                        <p class="service-description">
-                            Полная диагностика состояния самокатов с использованием специального оборудования.
-                        </p>
-                    </div>
-
-                    <div class="service-card">
-                        <div class="service-icon">🔄</div>
-                        <h3 class="service-title">Модернизация</h3>
-                        <p class="service-description">
-                            Установка улучшенных компонентов и обновление программного обеспечения самокатов.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="cta animate-on-scroll">
-            <div class="container">
-                <h2 class="cta-title">Присоединяйтесь к команде профессионалов</h2>
-                <p class="cta-description">
-                    Работайте с лучшими специалистами в сфере ремонта самокатов Яндекс.
-                    Отслеживайте свою статистику и развивайтесь вместе с нами!
-                </p>
-                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
-                    <button class="btn" onclick="login()">🔐 Войти в систему</button>
-                    <button class="btn btn-secondary" onclick="requestAccess()">📝 Запросить доступ</button>
-                </div>
-            </div>
-        </section>
+        <!-- ... остальные секции ... -->
     </main>
+
+    <!-- Модальные окна -->
+    <div class="modal-bg" id="profileModal">
+        <div class="modal-window">
+            <button class="modal-close" onclick="closeModal('profileModal')" title="Закрыть">&times;</button>
+            <div class="modal-title">Мой профиль</div>
+            <div class="profile-main">
+                <img id="profileAvatar" class="profile-avatar" src="https://i.pravatar.cc/100?img=13" alt="Avatar">
+                <div class="profile-info">
+                    <div class="profile-name" id="profileName">Иванов Иван</div>
+                    <div class="profile-date" id="profileStart">Работает с: 01.01.2024</div>
+                </div>
+            </div>
+            <div class="shift-table" id="shiftTable"></div>
+            <div class="profile-stats">
+                <div class="profile-scooters" id="profileScooters"></div>
+                <div class="profile-duration" id="profileDuration"></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-bg" id="statsModal">
+        <div class="modal-window">
+            <button class="modal-close" onclick="closeModal('statsModal')" title="Закрыть">&times;</button>
+            <div class="modal-title">Статистика</div>
+            <div class="stats-numbers">
+                <div>
+                    <div class="stats-counter" id="statAll">0</div>
+                    <div class="stats-label">Всего ремонтов</div>
+                </div>
+                <div>
+                    <div class="stats-counter" id="statToday">0</div>
+                    <div class="stats-label">Сегодня</div>
+                </div>
+            </div>
+            <div class="stats-chart" id="statsChart"></div>
+        </div>
+    </div>
+    <div class="modal-bg" id="teamModal">
+        <div class="modal-window">
+            <button class="modal-close" onclick="closeModal('teamModal')" title="Закрыть">&times;</button>
+            <div class="modal-title">Исполнители</div>
+            <div class="team-list" id="teamList"></div>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container">
@@ -760,19 +307,9 @@
             const tg = window.Telegram.WebApp;
             tg.ready();
             tg.expand();
-
-            // Set theme colors
             tg.setHeaderColor('#0a0a0a');
             tg.setBackgroundColor('#0a0a0a');
-
-            // Add telegram-webapp class to body
             document.body.classList.add('telegram-webapp');
-
-            // Get user data
-            const user = tg.initDataUnsafe?.user;
-            if (user) {
-                console.log('Telegram user:', user);
-            }
         }
 
         // Scroll animations
@@ -781,7 +318,6 @@
             rootMargin: '0px',
             threshold: 0.1
         };
-
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -794,61 +330,125 @@
             observer.observe(el);
         });
 
-        // Button functions
-        function viewProfile() {
-            const data = {
-                action: 'view_profile',
-                timestamp: new Date().toISOString()
-            };
+        // Модальные окна
+        function openModal(id) {
+            renderModalContent(id);
+            document.getElementById(id).classList.add('active');
+        }
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+        window.openModal = openModal; window.closeModal = closeModal;
 
-            if (window.Telegram && window.Telegram.WebApp) {
-                window.Telegram.WebApp.sendData(JSON.stringify(data));
-                window.Telegram.WebApp.showAlert('👤 Открываем профиль сотрудника...');
-            } else {
-                alert('👤 Открываем профиль сотрудника...');
+        // Пример данных профиля
+        const userProfile = {
+            name: "Иванов Иван",
+            photo: "https://i.pravatar.cc/100?img=13",
+            workStart: "2024-01-01",
+            shifts: [
+                "work", "off", "work", "done", "off", "work", "off"
+            ],
+            repaired: [4, 0, 5, 2, 0, 7, 0],
+        };
+        // Пример статистики
+        const statsData = {
+            all: 1247,
+            today: 18,
+            week: [12, 14, 9, 17, 15, 18, 16]
+        };
+        // Пример команды
+        const team = [
+            { category: "Техники", members: [
+                    { name: "Иванов Иван", online: true },
+                    { name: "Михайлов Михаил", online: false }
+            ]},
+            { category: "Кладовщики", members: [
+                    { name: "Петров Константин", online: true },
+                    { name: "Васильев Иван", online: false }
+            ]},
+            { category: "Электронщики", members: [
+                    { name: "Мухин Павел", online: true }
+            ]},
+            { category: "Тестировщик", members: [
+                    { name: "Соболев Владислав", online: false }
+            ]},
+            { category: "Бригадир", members: [
+                    { name: "Максимов Константин", online: true }
+            ]},
+        ];
+
+        function renderModalContent(id) {
+            if (id === "profileModal") {
+                document.getElementById('profileName').textContent = userProfile.name;
+                document.getElementById('profileAvatar').src = userProfile.photo;
+                document.getElementById('profileStart').textContent = "Работает с: " + userProfile.workStart;
+
+                // Стаж
+                const start = new Date(userProfile.workStart);
+                const now = new Date();
+                const diff = Math.floor((now - start) / (24 * 3600 * 1000));
+                document.getElementById('profileDuration').innerHTML = `Стаж: <b>${diff}</b> дней`;
+
+                // График смен
+                const days = ['Пн','Вт','Ср','Чт','Пт','Сб','Вс'];
+                let html = '';
+                for (let i = 0; i < 7; i++) {
+                    let cls = userProfile.shifts[i] === 'work' ? 'shift-work'
+                        : userProfile.shifts[i] === 'done' ? 'shift-done'
+                        : 'shift-off';
+                    html += `<div class="shift-cell ${cls}">${days[i]}<br>${userProfile.repaired[i] > 0 ? userProfile.repaired[i] : ''}</div>`;
+                }
+                document.getElementById('shiftTable').innerHTML = html;
+
+                // Динамика ремонта
+                let sum = userProfile.repaired.reduce((a,b)=>a+b,0);
+                document.getElementById('profileScooters').innerHTML = `Отремонтировано за неделю: <b>${sum}</b>`;
+            }
+            else if (id === "statsModal") {
+                // Анимированные счетчики
+                animateNumber('statAll', statsData.all, 1000);
+                animateNumber('statToday', statsData.today, 800);
+
+                // Мини-график (барчарт)
+                let max = Math.max(...statsData.week);
+                let chart = '';
+                for (let v of statsData.week) {
+                    let h = 20 + (v/max)*60;
+                    chart += `<div class="stats-bar" style="height:${h}px"></div>`;
+                }
+                document.getElementById('statsChart').innerHTML = chart;
+            }
+            else if (id === "teamModal") {
+                let html = '';
+                for (const cat of team) {
+                    html += `<div class="team-category">${cat.category} <span style="color:var(--text-primary)">(${cat.members.length})</span></div>`;
+                    for (const mem of cat.members) {
+                        html += `<div class="team-member">${mem.name} <span class="status-dot ${mem.online ? 'online' : 'offline'}"></span>${mem.online ? ' онлайн' : ' офлайн'}</div>`;
+                    }
+                }
+                document.getElementById('teamList').innerHTML = html;
             }
         }
 
-        function viewStats() {
-            const data = {
-                action: 'view_stats',
-                timestamp: new Date().toISOString()
-            };
-
-            if (window.Telegram && window.Telegram.WebApp) {
-                window.Telegram.WebApp.sendData(JSON.stringify(data));
-                window.Telegram.WebApp.showAlert('📊 Загружаем статистику ремонтов...');
-            } else {
-                alert('📊 Загружаем статистику ремонтов...');
+        function animateNumber(id, target, duration) {
+            const el = document.getElementById(id);
+            let start = 0, startTime = null;
+            function step(ts) {
+                if (!startTime) startTime = ts;
+                let progress = Math.min((ts - startTime) / duration, 1);
+                el.textContent = Math.floor(progress * (target - start) + start);
+                if (progress < 1) requestAnimationFrame(step);
+                else el.textContent = target;
             }
+            requestAnimationFrame(step);
         }
 
-        function login() {
-            const data = {
-                action: 'login',
-                timestamp: new Date().toISOString()
-            };
+        // Для совместимости с кнопками старого вида
+        function viewProfile() { openModal('profileModal'); }
+        function viewStats() { openModal('statsModal'); }
+        function login() { alert("🔐 Вход в систему реализуется через Telegram-бота"); }
+        function requestAccess() { alert("📝 Запрос на доступ реализуется через Telegram-бота"); }
 
-            if (window.Telegram && window.Telegram.WebApp) {
-                window.Telegram.WebApp.sendData(JSON.stringify(data));
-                window.Telegram.WebApp.showAlert('🔐 Выполняем вход в систему...');
-            } else {
-                alert('🔐 Выполняем вход в систему...');
-            }
-        }
-
-        function requestAccess() {
-            const data = {
-                action: 'request_access',
-                timestamp: new Date().toISOString()
-            };
-
-            if (window.Telegram && window.Telegram.WebApp) {
-                window.Telegram.WebApp.sendData(JSON.stringify(data));
-                window.Telegram.WebApp.showAlert('📝 Запрос на доступ отправлен!');
-            } else {
-                alert('📝 Запрос на доступ отправлен!');
-            }
-        }
-
-        // Smooth scrolling for navigation
+    </script>
+</body>
+</html>
