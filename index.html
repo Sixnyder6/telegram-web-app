@@ -6,6 +6,7 @@
     <title>Lucius Pro - Ремонт самокатов Яндекс</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <style>
+        /* ... твои стили ... */
         :root {
             --bg-primary: #0a0a0a;
             --bg-secondary: #1a1a1a;
@@ -20,9 +21,9 @@
             --border-radius: 12px;
             --blur-bg: rgba(30,30,30,0.85);
         }
-        /* ... [оставь все твои стили как есть здесь] ... */
+        /* ... (оставь все твои стили, как есть) ... */
 
-        /* Модальные окна (добавлено) */
+        /* Модальные окна */
         .modal-bg {
             display: none;
             position: fixed;
@@ -198,7 +199,6 @@
             from { opacity: 0.4; }
             to   { opacity: 1; }
         }
-        /* Адаптив для модалок */
         @media (max-width:600px) {
             .modal-window { width: 95vw; padding: 18px 3vw 18px 3vw; }
         }
@@ -224,8 +224,6 @@
     </header>
 
     <main>
-        <!-- ... твои секции ... -->
-
         <section class="hero" id="home">
             <div class="container">
                 <h1 class="hero-title">🛴 Lucius Pro</h1>
@@ -242,7 +240,8 @@
             </div>
         </section>
 
-        <!-- ... остальные секции ... -->
+        <!-- ... остальные секции, как у тебя ... -->
+
     </main>
 
     <!-- Модальные окна -->
@@ -405,7 +404,6 @@
                 document.getElementById('profileScooters').innerHTML = `Отремонтировано за неделю: <b>${sum}</b>`;
             }
             else if (id === "statsModal") {
-                // Анимированные счетчики
                 animateNumber('statAll', statsData.all, 1000);
                 animateNumber('statToday', statsData.today, 800);
 
